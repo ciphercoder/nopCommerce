@@ -1,0 +1,33 @@
+﻿@using Nop.Web.Areas.Admin.Models.Books
+@model BookSearchModel
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h2>View</h2>
+
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Name")
+            </th>
+ 
+         
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.BookList) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+           
+        </tr>
+}
+    </tbody>
+</table>

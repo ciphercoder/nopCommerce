@@ -1,6 +1,8 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using Nop.Core.Domain.Affiliates;
 using Nop.Core.Domain.Blogs;
+using Nop.Core.Domain.Book;
 using Nop.Core.Domain.Catalog;
 using Nop.Core.Domain.Common;
 using Nop.Core.Domain.Configuration;
@@ -60,6 +62,7 @@ using Nop.Web.Areas.Admin.Models.Templates;
 using Nop.Web.Areas.Admin.Models.Topics;
 using Nop.Web.Areas.Admin.Models.Vendors;
 using Nop.Web.Framework.Models;
+using Nop.Web.Models;
 
 namespace Nop.Web.Areas.Admin.Infrastructure.Mapper
 {
@@ -102,6 +105,8 @@ namespace Nop.Web.Areas.Admin.Infrastructure.Mapper
             CreateTopicsMaps();
             CreateVendorsMaps();
             CreateWarehouseMaps();
+            CreateBookMaps();
+
 
             //add some generic mapping rules
             ForAllMaps((mapConfiguration, map) =>
@@ -163,6 +168,13 @@ namespace Nop.Web.Areas.Admin.Infrastructure.Mapper
                 }
             });
         }
+
+        protected virtual void CreateBookMaps()
+        {
+            CreateMap<BooksModel, Books>()
+                .ForMember(entity => entity.Name, options => options.Ignore());
+        }
+
 
         #endregion
 
